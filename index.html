@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johanna Corte y Confección</title>
+<meta name="description" content="Johanna Corte y Confección: arreglos, ajustes y confección a medida en Santiago. Cotiza con nuestro asistente y agenda tu hora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: cálida, cercana y prolija, como un taller de barrio con oficio de años
+   IDEA: la mesa de costura: cinta métrica, puntadas y patrones de papel
+   PICTURE: un maniquí vestido en tonos pastel, con cinta métrica y tijeras
+   COLOUR and TYPE: rosa chicle intenso dominante, menta y lila de apoyo, frambuesa como acento; DM Serif Display + Nunito
+   LAYOUT: bandas a todo el ancho con costura punteada como separador; todo apila en una columna bajo 600px */
+:root{color-scheme:light dark;
+--bg:light-dark(#fff4f7,#1f1024);--ink:light-dark(#2d1430,#fdeef4);--muted:light-dark(#6b4a66,#d9bfd3);
+--rose:light-dark(#ffb8cf,#6e2147);--rose2:light-dark(#e8336f,#ff5c93);--sage:light-dark(#9fe3c4,#1f5a45);
+--lav:light-dark(#cdb4ff,#4a2f7a);--card:light-dark(#ffffff,#2c1832);--line:light-dark(#f2b8cc,#5a3560);
+--cream:light-dark(#ffd3e4,#3b1640)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.05;text-wrap:balance;margin:0 0 .5em}
+h2{font-size:clamp(32px,4.4vw,48px)}h3{font-size:22px}
+p{margin:0 0 1em;max-width:62ch}a{color:inherit}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}.in{max-width:1180px;margin:0 auto}
+.seam{height:0;border-top:2px dashed var(--rose2);opacity:.55;margin:0 max(5vw,16px)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;border:0;background:var(--rose2);color:#fff;box-shadow:0 6px 18px color-mix(in srgb,var(--rose2) 40%,transparent);font:700 16px Nunito,sans-serif;text-decoration:none;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ink);border:2px solid var(--ink);box-shadow:none}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--rose2);outline-offset:2px}
+/* navbar */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px max(5vw,16px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand b{font:400 22px/1 "DM Serif Display",serif}.brand small{display:block;font-size:13px;color:var(--muted);letter-spacing:.02em}
+.links{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.links a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:600}
+.links a:hover{background:var(--rose)}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+@media(max-width:860px){.burger{display:grid;place-items:center}.links{position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--bg);padding:8px max(5vw,16px) 16px;border-bottom:1px solid var(--line);display:none}.links.open{display:flex}.nav-cta{display:none}}
+/* hero */
+.hero{background:linear-gradient(150deg,var(--rose) 0%,#ffd1e0 45%,var(--lav) 100%)}
+:root[data-theme=dark] .hero{background:linear-gradient(150deg,var(--rose),var(--lav))}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .hero{background:linear-gradient(150deg,var(--rose),var(--lav))}}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(40px,6vw,68px)}.hero p{font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding:0;list-style:none}
+.facts li{background:var(--card);border-radius:14px;padding:8px 14px;font-weight:600;font-size:15px}
+.mani{width:100%;height:auto;max-height:520px}
+/* about */
+.about .in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.about .intro{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:12px}
+.tile{background:var(--card);border:2px solid var(--line);box-shadow:0 8px 24px color-mix(in srgb,var(--rose2) 14%,transparent);border-radius:22px;padding:22px}
+.tile svg{width:44px;height:44px;margin-bottom:8px}
+/* carousel */
+.works{background:linear-gradient(160deg,light-dark(#e4d2ff,#3a2266) 0%,light-dark(#ffc6dc,#5e1e45) 100%)}
+.car{position:relative;margin-top:20px}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(340px,82%);scroll-snap-align:start;background:var(--card);border-radius:22px;overflow:hidden;margin:0}
+.slide svg{display:block;width:100%;height:auto;aspect-ratio:4/3}
+.slide figcaption{padding:14px 18px 18px}.slide figcaption b{display:block;font-size:17px}.slide figcaption span{color:var(--muted);font-size:15px}
+.carnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.dots{display:flex;gap:8px;flex-wrap:wrap}.dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--ink);opacity:.25;cursor:pointer;padding:0}
+.dots button[aria-current=true]{opacity:1}
+.arrows{display:flex;gap:8px}.arrows button{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);font-size:20px;cursor:pointer}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+/* services / prices */
+.prices{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px;margin-top:20px}
+.price{display:flex;flex-direction:column;gap:8px;background:var(--card);border:2px solid var(--line);border-left:6px solid var(--rose2);border-radius:16px;padding:16px 18px;overflow:hidden}
+.price span{font-weight:700;overflow-wrap:anywhere}.price em{font-style:normal;font-weight:800;font-size:18px;color:var(--rose2);white-space:nowrap}.price small{display:block;color:var(--muted);font-size:14px;font-weight:600}
+/* agenda */
+.agenda{background:linear-gradient(200deg,var(--cream) 0%,light-dark(#f1dcff,#2e1650) 100%)}
+.agenda .in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px)}
+form{background:var(--card);border-radius:24px;padding:clamp(18px,3vw,30px);border:1px solid var(--line);display:grid;gap:14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:15px}
+input,select,textarea{font:16px Nunito,sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;min-height:46px;padding:10px 12px;width:100%}
+textarea{min-height:84px;resize:vertical}
+.cal{border:2px solid var(--line);border-radius:18px;padding:12px}
+.calhd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.calhd b{font-size:17px;text-transform:capitalize}
+.calhd button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer}
+.calhd button:disabled{opacity:.35;cursor:not-allowed}
+.calwk,.calgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.calwk span{font-size:13px;font-weight:700;color:var(--muted)}
+.calgrid button{aspect-ratio:1;min-height:38px;border-radius:12px;border:2px solid transparent;font:700 15px Nunito,sans-serif;cursor:pointer;color:var(--ink);background:light-dark(#d9f7e9,#1f4a3c)}
+.calgrid button.few{background:light-dark(#ffe3a3,#5a4515)}.calgrid button.full{background:light-dark(#ffc2cf,#5e1e35);text-decoration:line-through}
+.calgrid button:disabled{background:transparent;color:var(--muted);opacity:.45;cursor:not-allowed}
+.calgrid button.full:disabled{background:light-dark(#ffc2cf,#5e1e35);opacity:.8}
+.calgrid button[aria-pressed=true]{border-color:var(--rose2);box-shadow:0 0 0 2px var(--rose2)}
+.calgrid .pad{visibility:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:13px;color:var(--muted)}
+.lg{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}.lg.free{background:light-dark(#9fe3c4,#2f8f6a)}.lg.few{background:#f5c04a}.lg.full{background:var(--rose2)}.lg.off{background:var(--line)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots button{min-height:44px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:600 15px Nunito,sans-serif;cursor:pointer}
+.slots button[aria-pressed=true]{background:var(--rose2);border-color:var(--rose2);color:#fff}
+.slots button:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.msg{border-radius:14px;padding:14px 16px;background:light-dark(#ffe1ec,#4a1d3a);display:none}.msg.on{display:block}
+.err{color:light-dark(#a33a52,#ffb3c4);font-size:14px;min-height:1em}
+.steps{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.steps i{font-style:normal;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--rose);font-weight:700}
+/* footer */
+footer{background:light-dark(#3a1340,#140a18);color:#fdeef4}
+footer .in{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px}
+footer h3{font-size:20px}footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a{text-decoration:none;opacity:.9}footer a:hover{opacity:1;text-decoration:underline}
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.social a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14)}
+.social svg{width:22px;height:22px;fill:currentColor}
+.legal{max-width:1180px;margin:28px auto 0;padding-top:18px;border-top:1px dashed rgba(255,255,255,.35);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:14px;opacity:.85}
+/* chatbot */
+.fab{position:fixed;right:18px;bottom:18px;z-index:40;height:58px;padding:0 20px 0 16px;border-radius:999px;border:0;background:var(--rose2);color:#fff;font:700 16px Nunito,sans-serif;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(61,43,61,.25);cursor:pointer}
+.fab svg{width:26px;height:26px}
+.chat{position:fixed;right:18px;bottom:88px;z-index:41;width:min(380px,calc(100vw - 24px));height:min(580px,calc(100dvh - 110px));background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 50px rgba(61,43,61,.28);display:none;flex-direction:column;overflow:hidden}
+.chat.on{display:flex}
+.chat header{position:static;display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--rose);backdrop-filter:none}
+.chat header b{display:block}.chat header small{color:var(--muted);font-size:13px}
+.chat header button{margin-left:auto;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--ink);font-size:22px;cursor:pointer}
+.log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.b{max-width:86%;padding:10px 13px;border-radius:16px;font-size:15px;line-height:1.5;white-space:pre-line}
+.b.bot{background:var(--lav);border-bottom-left-radius:4px}.b.me{align-self:flex-end;background:var(--rose2);color:#fff;border-bottom-right-radius:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.chips button{min-height:36px;padding:0 12px;border-radius:999px;border:1.5px solid var(--rose2);background:transparent;color:var(--ink);font:600 14px Nunito,sans-serif;cursor:pointer}
+.chat form{border:0;border-top:1px solid var(--line);border-radius:0;padding:10px;grid-template-columns:1fr auto;gap:8px}
+.chat form button{width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);cursor:pointer;font-size:18px}
+.typing{opacity:.6;font-style:italic}
+@media(max-width:860px){.hero .in,.agenda .in,.about .intro{grid-template-columns:1fr}.about .in{grid-template-columns:1fr 1fr}footer .in{grid-template-columns:1fr 1fr}.mani{max-height:380px}}
+@media(max-width:600px){.about .in,footer .in,.row{grid-template-columns:1fr}.fab span{display:none}.fab{padding:0 16px}.chat{right:12px;bottom:84px}.hero h1{font-size:38px}}
+@media(prefers-reduced-motion:no-preference){.tape{animation:sway 6s ease-in-out infinite;transform-origin:50% 0}@keyframes sway{50%{transform:rotate(3deg)}}}
+@media(prefers-reduced-motion:reduce){html,.track{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="#ffb8cf" stroke="#e8336f" stroke-width="2"/><path d="M15 33c6-1 10-6 11-13l2-8" fill="none" stroke="#3d2b3d" stroke-width="2.4" stroke-linecap="round"/><circle cx="28.6" cy="10.5" r="2.2" fill="none" stroke="#3d2b3d" stroke-width="1.6"/><path d="M12 36c8 2 18 1 24-6" fill="none" stroke="#3fbf8a" stroke-width="2" stroke-dasharray="3 3"/></symbol>
+ </defs>
+</svg>
+
+<header>
+ <nav aria-label="Principal">
+  <a class="brand" href="#inicio"><svg width="44" height="44"><use href="#logo"/></svg><span><b>Johanna</b><small>Corte y Confección</small></span></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <ul class="links" id="menu">
+   <li><a href="#nosotros">Sobre nosotros</a></li>
+   <li><a href="#trabajos">Trabajos</a></li>
+   <li><a href="#precios">Precios</a></li>
+   <li><a href="#agendar">Agendar</a></li>
+   <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="btn nav-cta" href="#agendar">Agenda tu hora</a>
+ </nav>
+</header>
+
+<main>
+<section class="band hero" id="inicio">
+ <div class="in">
+  <div>
+   <h1>Ropa que te queda como hecha para ti, porque lo está</h1>
+   <p>Arreglos, ajustes y confección a medida con la experiencia de una modista con más de 25 años de oficio. Cada prenda se mide, se prueba y se termina a mano.</p>
+   <div class="ctas"><a class="btn" href="#agendar">Agendar una prueba</a><button class="btn alt" type="button" data-open-chat>Cotizar con el asistente</button></div>
+   <ul class="facts"><li>Arreglos desde $4.000</li><li>Basta lista en 24–48 h</li><li>Vestidos a medida</li></ul>
+  </div>
+  <svg class="mani" viewBox="0 0 420 460" role="img" aria-label="Ilustración de un maniquí con vestido, cinta métrica y tijeras">
+   <ellipse cx="210" cy="440" rx="120" ry="12" fill="#3d2b3d" opacity=".12"/>
+   <rect x="204" y="330" width="12" height="100" rx="5" fill="#8a5a78"/><path d="M160 436h100" stroke="#8a5a78" stroke-width="10" stroke-linecap="round"/>
+   <path d="M168 70c-4 30 6 44 10 60 3 14-30 40-34 70-6 44 22 70 30 110 10 20 62 22 72 0 8-40 36-66 30-110-4-30-37-56-34-70 4-16 14-30 10-60z" fill="#ff9fbf"/>
+   <path d="M168 70c18 10 66 10 84 0" fill="none" stroke="#e8336f" stroke-width="3"/>
+   <path d="M176 128c20 8 48 8 68 0" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="5 5" opacity=".8"/>
+   <path d="M144 200c22 10 110 10 132 0" fill="none" stroke="#e8336f" stroke-width="2" stroke-dasharray="4 4"/>
+   <path d="M150 210c-10 50 6 90 24 124 22 10 50 10 72 0 18-34 34-74 24-124" fill="#c9a8ff" opacity=".9"/>
+   <path d="M174 334c-6 20-10 46-6 70 30 10 54 10 84 0 4-24 0-50-6-70" fill="#8fdcb8"/>
+   <circle cx="210" cy="56" r="16" fill="#8a5a78"/>
+   <g class="tape"><path d="M188 76c-30 40-40 120-24 210" fill="none" stroke="#f7d774" stroke-width="12" stroke-linecap="round"/><path d="M188 76c-30 40-40 120-24 210" fill="none" stroke="#3d2b3d" stroke-width="12" stroke-dasharray="1 9" opacity=".5"/></g>
+   <g transform="translate(300 300) rotate(-28)"><circle cx="-10" cy="40" r="14" fill="none" stroke="#3fbf8a" stroke-width="7"/><circle cx="22" cy="40" r="14" fill="none" stroke="#3fbf8a" stroke-width="7"/><path d="M-2 28l30-70M14 28l-30-70" stroke="#7a6672" stroke-width="6" stroke-linecap="round"/></g>
+   <g fill="#e8336f"><circle cx="70" cy="120" r="6"/><circle cx="86" cy="104" r="4"/><circle cx="350" cy="140" r="5"/></g>
+   <path d="M40 300c30-20 60-20 90 0" fill="none" stroke="#3fbf8a" stroke-width="2" stroke-dasharray="4 5"/>
+  </svg>
+ </div>
+</section>
+
+<section class="band about" id="nosotros">
+ <div class="in">
+  <div class="intro">
+   <h2>Sobre nosotros</h2>
+   <p>Johanna descubrió la costura desde pequeña y la convirtió en su oficio: desde entonces ha cosido para familias, novias, colegios y pequeñas empresas. Hoy atiende en su propio taller, con la misma regla de siempre: no se entrega una prenda que no se haya probado.</p>
+  </div>
+  <div class="tile"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="var(--rose)"/><path d="M12 30l20-16M26 12l6 2-2 6" stroke="var(--ink)" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg><h3>Arreglos y ajustes</h3><p>Bastas, cierres, achicar o agrandar, entallar chaquetas y renovar prendas que ya no usas.</p></div>
+  <div class="tile"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="var(--sage)"/><path d="M16 12h12l4 8-6 4v10H18V24l-6-4z" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linejoin="round"/></svg><h3>Confección a medida</h3><p>Vestidos de fiesta y novia, trajes, uniformes y prendas únicas desde el molde hasta la última terminación.</p></div>
+  <div class="tile"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="var(--lav)"/><path d="M11 22h22M11 22c0-6 5-10 11-10s11 4 11 10M15 22v10M29 22v10" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/></svg><h3>Hogar y empresas</h3><p>Cortinas, cojines, mantelería y uniformes por volumen para colegios, restaurantes y pymes.</p></div>
+ </div>
+</section>
+
+<div class="seam" aria-hidden="true"></div>
+
+<section class="band works" id="trabajos">
+ <div class="in">
+  <h2>Trabajos realizados</h2>
+  <p>Algunas piezas del taller. Desliza o usa las flechas.</p>
+  <div class="car">
+   <div class="track" id="track" tabindex="0" aria-label="Carrusel de trabajos"></div>
+   <div class="carnav"><div class="dots" id="dots" role="group" aria-label="Elegir trabajo"></div><div class="arrows"><button type="button" id="prev" aria-label="Anterior">‹</button><button type="button" id="next" aria-label="Siguiente">›</button></div></div>
+  </div>
+  <p class="note">Imágenes ilustrativas de referencia; se reemplazan por fotos reales del taller.</p>
+ </div>
+</section>
+
+<section class="band" id="precios">
+ <div class="in">
+  <h2>Precios de referencia</h2>
+  <p>Valores estimados; el precio final se confirma al ver la prenda y la tela. Servicio urgente en 24 h con 30% de recargo.</p>
+  <div class="prices" id="prices"></div>
+ </div>
+</section>
+
+<section class="band agenda" id="agendar">
+ <div class="in">
+  <div>
+   <h2>Agenda tu hora</h2>
+   <p>Elige el día y la hora para tu prueba, toma de medidas o entrega de prenda. Atendemos de lunes a viernes de 10:00 a 18:00 y sábados de 10:00 a 13:00.</p>
+   <ol class="steps">
+    <li><i>1</i><span>Mira en el calendario qué días y horas quedan libres y elige la tuya.</span></li>
+    <li><i>2</i><span>Te llega un correo automático con la confirmación de tu hora.</span></li>
+    <li><i>3</i><span>Trae tu prenda o tu tela; si es a medida, tomamos medidas ese día.</span></li>
+   </ol>
+  </div>
+  <form id="book" novalidate>
+   <div class="row">
+    <label>Nombre<input id="bName" autocomplete="name" required></label>
+    <label>Teléfono<input id="bPhone" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required></label>
+   </div>
+   <label>Correo electrónico<input id="bMail" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.cl" required></label>
+   <label>Servicio<select id="bSvc"></select></label>
+   <div class="cal" aria-label="Calendario de disponibilidad">
+    <div class="calhd"><button type="button" id="cPrev" aria-label="Mes anterior">‹</button><b id="cMonth" aria-live="polite"></b><button type="button" id="cNext" aria-label="Mes siguiente">›</button></div>
+    <div class="calwk" aria-hidden="true"><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span></div>
+    <div class="calgrid" id="cGrid" role="grid"></div>
+    <div class="legend"><span><i class="lg free"></i>Disponible</span><span><i class="lg few"></i>Pocas horas</span><span><i class="lg full"></i>Completo</span><span><i class="lg off"></i>Cerrado</span></div>
+   </div>
+   <div><b style="font-size:15px" id="slotTitle">Hora</b><div class="slots" id="slots" role="group" aria-label="Horarios"></div></div>
+   <label>Detalle (opcional)<textarea id="bNote" placeholder="Ej.: basta de 2 pantalones de tela"></textarea></label>
+   <p class="err" id="bErr" aria-live="polite"></p>
+   <button class="btn" type="submit" id="bGo">Confirmar reserva</button>
+   <div class="msg" id="bOk" aria-live="polite"></div>
+   <p class="note" id="bMode"></p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer class="band" id="contacto">
+ <div class="in">
+  <div>
+   <a class="brand" href="#inicio"><svg width="44" height="44"><use href="#logo"/></svg><span><b>Johanna</b><small style="color:inherit;opacity:.8">Corte y Confección</small></span></a>
+   <p style="margin-top:14px;opacity:.85">Arreglos, ajustes y confección a medida hechos con cariño y precisión.</p>
+   <div class="social">
+    <a href="https://www.instagram.com/johannacorteyconfeccion" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.3 2.2 2.2 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.6 2.2 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.1 5.7-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.6-2.2-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.6.1 3.9 1.4 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.6-1.4 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.6-.1-3.9-1.4-4-4C3.8 15 3.8 14.7 3.8 12s0-3 .1-4c.1-2.6 1.4-3.9 4-4 1-.1 1.3-.1 4.1-.1z"/></svg></a>
+    <a href="https://www.facebook.com/johannacorteyconfeccion" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+    <a href="https://www.tiktok.com/@johannacorteyconfeccion" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 3c.4 2.3 1.8 3.8 4 4v3.2c-1.5 0-2.9-.4-4-1.2v6.3A5.8 5.8 0 1 1 10.7 9.5v3.3a2.6 2.6 0 1 0 2.6 2.6V3z"/></svg></a>
+    <a href="https://wa.me/56900000000" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+   </div>
+  </div>
+  <div><h3>Visítanos</h3><ul><li>Santiago, Región Metropolitana</li><li>Lun a vie: 10:00–18:00</li><li>Sáb: 10:00–13:00</li></ul></div>
+  <div><h3>Contacto</h3><ul><li><a href="https://wa.me/56900000000">WhatsApp +56 9 0000 0000</a></li><li>contacto@johannacorteyconfeccion.cl</li><li><button class="btn" type="button" data-open-chat style="min-height:40px;padding:0 16px;font-size:15px">Hablar con el asistente</button></li></ul></div>
+  <div><h3>Navegación</h3><ul><li><a href="#nosotros">Sobre nosotros</a></li><li><a href="#trabajos">Trabajos</a></li><li><a href="#precios">Precios</a></li><li><a href="#agendar">Agendar</a></li></ul></div>
+ </div>
+ <div class="legal"><span>© <span id="yr"></span> Johanna Corte y Confección</span><span>Teléfono, correo, dirección y redes son de ejemplo: reemplázalos por los reales.</span></div>
+</footer>
+
+<button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke-linecap="round"/></svg><span>¿Cotizamos?</span></button>
+<section class="chat" id="chat" aria-label="Asistente virtual">
+ <header><svg width="38" height="38"><use href="#logo"/></svg><div><b>Asistente de Johanna</b><small>Responde al instante</small></div><button type="button" id="close" aria-label="Cerrar chat">×</button></header>
+ <div class="log" id="log" aria-live="polite"></div>
+ <div class="chips" id="chips"></div>
+ <form id="ask"><input id="q" placeholder="Escribe tu pregunta…" autocomplete="off" aria-label="Tu pregunta"><button type="submit" aria-label="Enviar">➤</button></form>
+</section>
+
+<script>
+{
+const $=s=>document.querySelector(s),clp=n=>'$'+n.toLocaleString('es-CL');
+const WA='56900000000';
+/* Servicios: precio mínimo, máximo (CLP), plazo y palabras clave */
+const S=[
+ {id:'basta',n:'Basta de pantalón o falda',a:4000,b:7000,d:'1 a 2 días hábiles',k:['basta','bastas','dobladillo','largo del pantalon','acortar']},
+ {id:'cierre',n:'Cambio de cierre',a:5000,b:9000,d:'1 a 3 días hábiles',k:['cierre','cremallera','zipper','cierres']},
+ {id:'ajuste',n:'Ajuste de cintura o talla',a:6000,b:12000,d:'2 a 4 días hábiles',k:['ajuste','achicar','agrandar','entallar','cintura','talla','apretado','suelto']},
+ {id:'chaqueta',n:'Ajuste de chaqueta o terno',a:15000,b:30000,d:'4 a 6 días hábiles',k:['chaqueta','terno','blazer','traje','vestón','abrigo','manga']},
+ {id:'reparacion',n:'Reparaciones (roturas, botones, forros)',a:3000,b:8000,d:'1 a 2 días hábiles',k:['roto','rotura','boton','botón','forro','descosido','parche','reparar','reparacion','reparación']},
+ {id:'fiesta',n:'Vestido de fiesta a medida',a:90000,b:220000,d:'3 a 5 semanas',k:['fiesta','gala','graduacion','graduación','madrina','vestido a medida','vestido']},
+ {id:'novia',n:'Vestido de novia a medida',a:250000,b:550000,d:'8 a 12 semanas',k:['novia','matrimonio','boda','casamiento']},
+ {id:'uniforme',n:'Uniformes (por unidad)',a:15000,b:30000,d:'2 a 4 semanas según cantidad',k:['uniforme','uniformes','delantal','cotona','empresa','colegio']},
+ {id:'cortina',n:'Cortinas (por metro lineal)',a:8000,b:15000,d:'1 a 2 semanas',k:['cortina','cortinas','visillo','cojin','cojín','mantel','hogar']}
+];
+/* precios */
+$('#prices').innerHTML=S.map(s=>`<div class="price"><span>${s.n}<small>${s.d}</small></span><em>${clp(s.a)} – ${clp(s.b)}</em></div>`).join('');
+/* carrusel con ilustraciones */
+const W=[['Vestido de novia','Confección a medida, encaje y tul','#ffb8cf','#fff','dress'],['Vestido de fiesta','Satín lavanda con escote en V','#c9a8ff','#9b6bff','dress'],['Ajuste de terno','Entalle de chaqueta y basta','#8fdcb8','#2f8f6a','coat'],['Uniformes escolares','Set de 40 delantales','#ffe0a8','#3fbf8a','apron'],['Cortinas a medida','Living con caída doble','#c9a8ff','#ffb8cf','curtain'],['Arreglo de jeans','Basta original y cierre nuevo','#d8e6f3','#6f8db0','jeans']];
+const shape=(t,c)=>({
+ dress:`<path d="M170 60c-6 30 8 40 10 56-20 30-50 70-60 140h160c-10-70-40-110-60-140 2-16 16-26 10-56-20 10-40 10-60 0z" fill="${c}"/><path d="M180 116c14 6 26 6 40 0" stroke="#e8336f" stroke-width="3" fill="none"/>`,
+ coat:`<path d="M150 60l50 20 50-20 40 40-20 40-20-10v130H150V130l-20 10-20-40z" fill="${c}"/><path d="M200 80v170M188 120h-22M200 150l-16 0" stroke="#fff" stroke-width="3" opacity=".7"/><circle cx="210" cy="170" r="4" fill="#fff"/><circle cx="210" cy="200" r="4" fill="#fff"/>`,
+ apron:`<path d="M170 60h60v40l40 10-10 150H140l-10-150 40-10z" fill="${c}"/><rect x="175" y="170" width="50" height="34" rx="6" fill="#fff" opacity=".6"/>`,
+ curtain:`<rect x="100" y="56" width="200" height="8" rx="4" fill="#7a6672"/><path d="M110 64c10 60-10 130 10 200h70c-20-70 0-140-10-200zM290 64c-10 60 10 130-10 200h-70c20-70 0-140 10-200z" fill="${c}"/>`,
+ jeans:`<path d="M150 60h100l10 200h-50l-10-140-10 140h-50z" fill="${c}"/><path d="M150 76h100" stroke="#fff" stroke-width="3" stroke-dasharray="5 5"/>`
+})[t];
+$('#track').innerHTML=W.map(([n,d,bg,c,t],i)=>`<figure class="slide" id="s${i}"><svg viewBox="0 0 400 300" role="img" aria-label="${n}"><rect width="400" height="300" fill="${bg}"/><circle cx="330" cy="60" r="70" fill="#fff" opacity=".35"/><ellipse cx="200" cy="268" rx="90" ry="8" fill="#3d2b3d" opacity=".12"/>${shape(t,c)}<path d="M30 280c40-14 80-14 120 0" stroke="#e8336f" stroke-width="2" fill="none" stroke-dasharray="4 5"/></svg><figcaption><b>${n}</b><span>${d}</span></figcaption></figure>`).join('');
+const tr=$('#track'),sl=[...tr.children];
+$('#dots').innerHTML=sl.map((_,i)=>`<button type="button" aria-label="Trabajo ${i+1}" data-i="${i}"></button>`).join('');
+const dots=[...$('#dots').children];
+const cur=()=>{let b=0,m=1e9;sl.forEach((s,i)=>{const d=Math.abs(s.offsetLeft-tr.offsetLeft-tr.scrollLeft);if(d<m){m=d;b=i}});return b};
+const go=i=>{i=(i+sl.length)%sl.length;tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft})};
+const mark=()=>{const c=cur();dots.forEach((d,i)=>d.setAttribute('aria-current',i===c))};
+tr.addEventListener('scroll',()=>requestAnimationFrame(mark));mark();
+$('#prev').onclick=()=>go(cur()-1);$('#next').onclick=()=>go(cur()+1);
+dots.forEach(d=>d.onclick=()=>go(+d.dataset.i));
+tr.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1)}});
+let auto=matchMedia('(prefers-reduced-motion:reduce)').matches?null:setInterval(()=>go(cur()+1),5000);
+['pointerdown','focusin','wheel'].forEach(ev=>tr.addEventListener(ev,()=>{clearInterval(auto);auto=null},{passive:true}));
+/* menú */
+const bg=$('#burger'),mn=$('#menu');
+bg.onclick=()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+mn.querySelectorAll('a').forEach(a=>a.onclick=()=>{mn.classList.remove('open');bg.setAttribute('aria-expanded',false)});
+$('#yr').textContent=new Date().getFullYear();
+/* agenda */
+/* CONFIG: al publicar en GitHub Pages, completa estas claves para que las reservas se compartan entre todos los clientes
+   y salga el correo automático. Mientras estén vacías, la página funciona en modo demostración (solo en este navegador). */
+const CFG={supabaseUrl:'',supabaseKey:'',emailjsService:'',emailjsTemplate:'',emailjsPublicKey:'',ownerEmail:'contacto@johannacorteyconfeccion.cl'};
+const LIVE=!!(CFG.supabaseUrl&&CFG.supabaseKey);
+const HRS=wd=>wd===0?[]:wd===6?['10:00','11:00','12:00']:['10:00','11:00','12:00','13:00','15:00','16:00','17:00'];
+const pad=n=>String(n).padStart(2,'0'),iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const local={get(){try{return JSON.parse(localStorage.getItem('jcc-citas')||'[]')}catch{return[]}},set(v){try{localStorage.setItem('jcc-citas',JSON.stringify(v))}catch{}}};
+const sbH=()=>({apikey:CFG.supabaseKey,Authorization:'Bearer '+CFG.supabaseKey,'Content-Type':'application/json'});
+/* Solo se leen fecha y hora (vista "ocupados"): nunca nombres ni datos de otros clientes */
+const api={
+ async taken(from,to){if(!LIVE)return local.get().filter(c=>c.f>=from&&c.f<=to).map(c=>c.f+' '+c.h);
+  const r=await fetch(`${CFG.supabaseUrl}/rest/v1/ocupados?select=fecha,hora&fecha=gte.${from}&fecha=lte.${to}`,{headers:sbH()});if(!r.ok)throw new Error('lectura');return(await r.json()).map(x=>x.fecha+' '+x.hora.slice(0,5))},
+ async book(c){if(!LIVE){const all=local.get();if(all.some(x=>x.f===c.fecha&&x.h===c.hora))return'taken';all.push({f:c.fecha,h:c.hora});local.set(all);return'ok'}
+  const r=await fetch(`${CFG.supabaseUrl}/rest/v1/reservas`,{method:'POST',headers:{...sbH(),Prefer:'return=minimal'},body:JSON.stringify(c)});
+  if(r.status===409)return'taken';if(!r.ok)throw new Error('guardar');return'ok'},
+ async mail(p){if(!CFG.emailjsService)return false;const r=await fetch('https://api.emailjs.com/api/v1.0/email/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service_id:CFG.emailjsService,template_id:CFG.emailjsTemplate,user_id:CFG.emailjsPublicKey,template_params:p})});return r.ok}
+};
+$('#bSvc').innerHTML=S.map(s=>`<option value="${s.id}">${s.n}</option>`).join('')+'<option value="medidas">Toma de medidas / consulta</option>';
+const today=new Date();today.setHours(0,0,0,0);const maxD=new Date(today);maxD.setDate(maxD.getDate()+60);
+let view=new Date(today.getFullYear(),today.getMonth(),1),day=null,slot=null,busy=new Set();
+const dayInfo=d=>{const hs=HRS(d.getDay()),k=iso(d),now=new Date();const free=hs.filter(h=>!busy.has(k+' '+h)&&!(k===iso(now)&&+h.slice(0,2)<=now.getHours()));return{hs,free}};
+const loadMonth=async()=>{const a=new Date(view),b=new Date(view.getFullYear(),view.getMonth()+1,0);
+ $('#cGrid').innerHTML='<span style="grid-column:1/-1;padding:20px 0" class="note">Cargando disponibilidad…</span>';
+ try{busy=new Set(await api.taken(iso(a),iso(b)))}catch{busy=new Set();$('#bErr').textContent='No pudimos cargar la disponibilidad. Intenta de nuevo en un momento.'}
+ drawCal()};
+const drawCal=()=>{$('#cMonth').textContent=view.toLocaleDateString('es-CL',{month:'long',year:'numeric'});
+ const first=(view.getDay()+6)%7,days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();let out='';
+ for(let i=0;i<first;i++)out+='<span class="pad"></span>';
+ for(let n=1;n<=days;n++){const d=new Date(view.getFullYear(),view.getMonth(),n),k=iso(d),{hs,free}=dayInfo(d);
+  const off=d<today||d>maxD||!hs.length;const cls=off?'':!free.length?'full':free.length<=2?'few':'';
+  const lab=off?'cerrado':!free.length?'completo':`${free.length} horas libres`;
+  out+=`<button type="button" class="${cls}" data-d="${k}" aria-pressed="${k===day}" aria-label="${d.toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'})}, ${lab}" ${off||!free.length?'disabled':''}>${n}</button>`}
+ $('#cGrid').innerHTML=out;
+ $('#cPrev').disabled=view<=new Date(today.getFullYear(),today.getMonth(),1);$('#cNext').disabled=new Date(view.getFullYear(),view.getMonth()+1,1)>maxD;drawSlots()};
+const drawSlots=()=>{const box=$('#slots');if(!day){$('#slotTitle').textContent='Hora';box.innerHTML='<span class="note">Elige un día disponible en el calendario.</span>';return}
+ const d=new Date(day+'T12:00'),{hs,free}=dayInfo(d);$('#slotTitle').textContent='Hora · '+d.toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'});
+ box.innerHTML=hs.map(h=>{const ok=free.includes(h);return`<button type="button" aria-pressed="${h===slot}" ${ok?'':'disabled class="taken"'} aria-label="${h}${ok?'':' ocupado'}">${h}</button>`}).join('')};
+$('#cGrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;day=b.dataset.d;slot=null;drawCal()});
+$('#slots').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;slot=b.textContent;drawSlots()});
+$('#cPrev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);loadMonth()};
+$('#cNext').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);loadMonth()};
+$('#bMode').textContent=LIVE?'':'Modo demostración: las reservas se guardan solo en este navegador y el correo se muestra como vista previa. Al publicar el sitio se conecta a la base de datos y al envío de correos.';
+loadMonth();
+$('#book').addEventListener('submit',async e=>{e.preventDefault();const n=$('#bName').value.trim(),p=$('#bPhone').value.trim(),m=$('#bMail').value.trim(),err=$('#bErr'),ok=$('#bOk');
+ if(!n)return err.textContent='Escribe tu nombre.';if(p.replace(/\D/g,'').length<8)return err.textContent='Escribe un teléfono válido.';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m))return err.textContent='Escribe un correo válido para enviarte la confirmación.';
+ if(!day)return err.textContent='Elige un día en el calendario.';if(!slot)return err.textContent='Elige una hora disponible.';err.textContent='';
+ const go=$('#bGo');go.disabled=true;go.textContent='Reservando…';
+ const sv=$('#bSvc').selectedOptions[0].text,note=$('#bNote').value.trim(),f=new Date(day+'T12:00').toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ try{
+  /* se vuelve a consultar justo antes de guardar; la base de datos además rechaza dos reservas en la misma fecha y hora */
+  busy=new Set(await api.taken(day,day));
+  const res=busy.has(day+' '+slot)?'taken':await api.book({fecha:day,hora:slot,nombre:n,telefono:p,correo:m,servicio:sv,detalle:note});
+  if(res==='taken'){err.textContent=`Lo sentimos, alguien acaba de tomar el ${f} a las ${slot}. Elige otra hora.`;slot=null;await loadMonth();return}
+  const params={to_email:m,to_name:n,servicio:sv,fecha:f,hora:slot,telefono:p,detalle:note||'—',reply_to:CFG.ownerEmail};
+  const sent=await api.mail(params).catch(()=>false);
+  const body=`Hola ${n},\n\nTu hora en Johanna Corte y Confección quedó confirmada:\n• Servicio: ${sv}\n• Fecha: ${f}\n• Hora: ${slot}\n\nSi necesitas cambiarla, responde este correo o escríbenos por WhatsApp al +56 9 0000 0000.\n¡Te esperamos!`;
+  ok.innerHTML=`<b>¡Reserva confirmada, ${n}!</b> ${f} a las ${slot} (${sv}).<br>${sent?`Te enviamos la confirmación a <b>${m}</b>.`:`<span class="note">Vista previa del correo que recibirá ${m}:</span><pre style="white-space:pre-wrap;font:14px/1.5 Nunito,sans-serif;background:var(--card);border-radius:12px;padding:12px;margin:8px 0 0">${body.replace(/</g,'&lt;')}</pre>`}`;
+  ok.classList.add('on');slot=null;day=null;await loadMonth();
+ }catch{err.textContent='No pudimos guardar tu reserva. Revisa tu conexión e inténtalo de nuevo.'}
+ finally{go.disabled=false;go.textContent='Confirmar reserva'}});
+/* chatbot */
+const log=$('#log'),chips=$('#chips'),chat=$('#chat'),fab=$('#fab');
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const say=(t,who='bot')=>{const d=document.createElement('div');d.className='b '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight};
+const setChips=a=>{chips.innerHTML=a.map(x=>`<button type="button">${x}</button>`).join('')};
+const MAIN=['Cotizar un arreglo','Vestido a medida','Plazos de entrega','Agendar hora','Horario y ubicación','Formas de pago'];
+const quote=(s,urg)=>{let a=s.a,b=s.b,t=`${s.n}: entre ${clp(a)} y ${clp(b)}.\nPlazo estimado: ${s.d}.`;
+ if(urg)t+=`\nCon servicio urgente (24 h, cuando la prenda lo permite): entre ${clp(Math.round(a*1.3/500)*500)} y ${clp(Math.round(b*1.3/500)*500)}.`;
+ return t+'\nEl valor final se confirma al ver la prenda. ¿Quieres agendar una hora?'};
+let waitQty=null;
+const reply=raw=>{const q=norm(raw),urg=/urgen|rapido|hoy|manana|24/.test(q);
+ if(waitQty){const n=parseInt(q.match(/\d+/)?.[0]||'0');const s=waitQty;waitQty=null;if(n>0){setChips(['Agendar hora','Otra cotización']);return `${n} × ${s.n}: entre ${clp(s.a*n)} y ${clp(s.b*n)} en total.\nPlazo estimado: ${s.d}.${n>=20?'\nPor volumen sobre 20 unidades aplicamos 10% de descuento: entre '+clp(Math.round(s.a*n*.9))+' y '+clp(Math.round(s.b*n*.9))+'.':''}`}}
+ if(/^(hola|buenas|buenos|hey|alo)/.test(q)){setChips(MAIN);return '¡Hola! Soy el asistente de Johanna Corte y Confección. Te ayudo con cotizaciones, plazos y reservas. ¿Qué necesitas?'}
+ if(/gracias|genial|perfecto|vale/.test(q)){setChips(MAIN);return '¡Con gusto! Si necesitas algo más, aquí estoy.'}
+ if(/agend|reserv|hora|cita|prueba|medida(s)? toma/.test(q)&&!/horario/.test(q)){setChips(MAIN);document.getElementById('agendar').scrollIntoView();return 'Te llevé a la sección "Agenda tu hora": mira en el calendario qué días y horas están libres, elige la tuya y te llegará un correo de confirmación.'}
+ if(/horario|abren|atienden|ubica|direcc|donde|comuna/.test(q)){setChips(MAIN);return 'Atendemos de lunes a viernes de 10:00 a 18:00 y sábados de 10:00 a 13:00, en Santiago (Región Metropolitana). La dirección exacta se envía al confirmar tu hora.'}
+ if(/pago|pagar|transfer|tarjeta|efectivo|abono|debito|credito/.test(q)){setChips(MAIN);return 'Aceptamos efectivo, transferencia y tarjeta de débito o crédito. En confección a medida se pide un abono del 50% al iniciar y el resto al entregar.'}
+ if(/tela|material|traer|compr/.test(q)){setChips(MAIN);return 'Puedes traer tu propia tela o te orientamos para comprarla. Para vestidos a medida calculamos los metros necesarios en la toma de medidas.'}
+ if(/domicilio|despacho|envio|retiro/.test(q)){setChips(MAIN);return 'Las pruebas y medidas son en el taller. Para empresas y uniformes por volumen coordinamos retiro y entrega en Santiago.'}
+ const s=S.find(s=>s.k.some(k=>q.includes(norm(k))));
+ if(s){if(s.id==='uniforme'||s.id==='cortina'){waitQty=s;setChips(['5','10','20','40']);return `${s.n}: ${clp(s.a)} a ${clp(s.b)} ${s.id==='cortina'?'por metro':'por unidad'}.\n¿Cuántos ${s.id==='cortina'?'metros':'unidades'} necesitas? Así te doy el total.`}
+  setChips(['Agendar hora','Otra cotización','Plazos de entrega']);return quote(s,urg)}
+ if(/precio|cuanto|valor|cotiz|cobr|costo|arreglo|otra/.test(q)){setChips(S.slice(0,9).map(s=>s.n.split(' (')[0]));return '¿Qué necesitas cotizar? Elige una opción o descríbelo con tus palabras (por ejemplo: "basta de 2 pantalones" o "achicar un vestido").'}
+ if(/plazo|demora|cuando|tiempo|listo|entrega|dias/.test(q)){setChips(MAIN);return 'Plazos estimados:\n• Bastas y reparaciones: 1 a 2 días hábiles\n• Ajustes: 2 a 6 días hábiles\n• Vestido de fiesta: 3 a 5 semanas\n• Vestido de novia: 8 a 12 semanas\n• Uniformes: 2 a 4 semanas\nServicio urgente en 24 h con 30% de recargo.'}
+ if(/humano|persona|johanna|whatsapp|telefono|llamar|contact/.test(q)){setChips(MAIN);return 'Puedes hablar directo con Johanna por WhatsApp al +56 9 0000 0000 (enlace en el pie de página).'}
+ setChips(MAIN);return 'No estoy segura de haber entendido 🙂. Puedo cotizar arreglos, vestidos a medida, uniformes y cortinas, darte plazos, horarios y formas de pago, o ayudarte a agendar. Prueba con una de las opciones.'};
+const send=t=>{if(!t.trim())return;say(t,'me');const d=document.createElement('div');d.className='b bot typing';d.textContent='Escribiendo…';log.appendChild(d);log.scrollTop=log.scrollHeight;setTimeout(()=>{d.remove();say(reply(t))},450)};
+$('#ask').addEventListener('submit',e=>{e.preventDefault();const i=$('#q');send(i.value);i.value=''});
+chips.addEventListener('click',e=>{const b=e.target.closest('button');if(b)send(b.textContent)});
+let started=false;const open=v=>{chat.classList.toggle('on',v);fab.setAttribute('aria-expanded',v);if(v){if(!started){started=true;say('¡Hola! Soy el asistente de Johanna Corte y Confección. Te ayudo a cotizar arreglos y confección, conocer plazos de entrega y agendar tu hora. ¿Qué necesitas?');setChips(MAIN)}$('#q').focus()}};
+fab.onclick=()=>open(!chat.classList.contains('on'));$('#close').onclick=()=>open(false);
+document.querySelectorAll('[data-open-chat]').forEach(b=>b.onclick=()=>open(true));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
+}
+</script>
+</body>
+</html>
